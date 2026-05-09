@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Services - Best Crane Service</title>
+</head>
+<body>
+    <!-- Navbar & WhatsApp -->
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+        </div>
+    </section>
+
+    <section class="services-list">
+        <div class="container">
+            <!-- Services loaded dynamically from localStorage -->
+            <div id="services-container">
+                <!-- Admin editable services will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Request Form -->
+    <section class="service-form">
+        <div class="container">
+            <div class="card">
+                <h2>Request Service</h2>
+                <form id="service-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <select required>
+                        <option value="">Select Service</option>
+                        <option>Mobile Cranes 25-100Ton</option>
+                        <!-- Dynamic options -->
+                    </select>
+                    <textarea placeholder="Project Details" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary full-width">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

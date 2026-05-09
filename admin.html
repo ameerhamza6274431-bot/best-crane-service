@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Best Crane Service - Dashboard</title> <!-- Generic title -->
+    <link rel="stylesheet" href="admin.css?v=2.1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Anti-Selection */
+        body { user-select: none; -webkit-user-select: none; }
+        /* Hide from bots */
+        .admin-panel { display: none; }
+    </style>
+</head>
+<body>
+        <!-- 🔐 LOGIN SCREEN (Publicly Visible) -->
+    <div id="loginContainer" class="login-wrapper">
+        <div class="login-box">
+            <div class="login-header">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Secure Access</h1>
+                <p>Best Crane Service Dashboard</p>
+            </div>
+            <form id="authForm">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="accessKey" placeholder="•••••••••••" maxlength="20" required>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="login-hint">
+                    <small>14 character access key required</small>
+                </div>
+            </form>
+            <div class="support">
+                <p><i class="fas fa-phone"></i>03046274431</p>
+            </div>
+        </div>
+    </div>
+     <!-- 🛡️ ADMIN PANEL (Hidden Until Auth) -->
+    <div id="adminPanel" class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Admin</span>
+                </div>
+                <button id="logoutBtn" class="logout-btn"><span>Logout</span>
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <nav class="admin-nav">
+                <a href="#contact" class="nav-item active" data-section="contact">
+                    <i class="fas fa-phone"></i> Contact
+                </a>
+                <a href="#services" class="nav-item" data-section="services">
+                    <i class="fas fa-cubes"></i> Services
+                </a>
+                <a href="#gallery" class="nav-item" data-section="gallery">
+                    <i class="fas fa-images"></i> Gallery
+                </a>
+                <a href="#reviews" class="nav-item" data-section="reviews">
+                    <i class="fas fa-star"></i> Reviews
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content (Same as before) -->
+        <main class="admin-main">
+            <!-- Contact Section -->
+            <section id="contact-section" class="admin-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-phone"></i> Contact Information</h2>
+                </div>
+                <form id="contactForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="adminPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" id="adminWhatsapp" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea id="adminAddress" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Update Contact
+                    </button>
+                </form>
+            </section>
+            <!-- Services Management -->
+            <section id="services-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Services Management</h2>
+                    <button class="btn btn-success" id="addServiceBtn">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </div>
+                <div id="servicesList" class="items-list"></div>
+            </section>
+
+            <!-- Gallery Management -->
+            <section id="gallery-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Gallery Management</h2>
+                    <button class="btn btn-success" id="addImageBtn">
+                        <i class="fas fa-plus"></i> Add Image
+                    </button>
+                </div>
+                <div id="galleryList" class="items-list"></div>
+            </section>
+
+            <!-- Reviews Management -->
+            <section id="reviews-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Reviews Management</h2>
+                </div>
+                <div id="reviewsList" class="items-list"></div>
+            </section>
+        </main>
+    </div>
+    <!-- Add Service Modal -->
+<!-- Service Modal - ICON DROPDOWN ADDED -->
+<div id="serviceModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Add New Service</h3>
+            <span class="close">&times;</span>
+        </div>
+        <form id="serviceFormModal">
+            <div class="form-group">
+                <label>Service Title *</label>
+                <input type="text" id="serviceTitle" placeholder="Enter service title" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Choose Icon ✨</label>
+                <div class="icon-selector">
+                    <select id="serviceIcon" required>
+                        <option value="">Select Icon</option>
+                        <option value="fas fa-truck-pickup">🚛 Truck Crane</option>
+                        <option value="fas fa-cube">📦 Crane Load</option>
+                        <option value="fas fa-weight-hanging">⚖️ Heavy Lift</option>
+                        <option value="fas fa-hard-hat">👷 Crane Operator</option>
+                        <option value="fas fa-tools">🔧 Crane Tools</option>
+                        <option value="fas fa-building">🏢 Building</option>
+                        <option value="fas fa-window-maximize">🪟 Glass Panel</option>
+                        <option value="fas fa-layer-group">🏗️ Construction</option>
+                        <option value="fas fa-map-marker-alt">📍 Location</option>
+                        <option value="fas fa-clock">⏰ 24/7 Service</option>
+                        <option value="fas fa-dollar-sign">💰 Affordable</option>
+                        <option value="fas fa-shield-alt">🛡️ Safety</option>
+                        <option value="fas fa-users">👥 Team</option>
+                        <option value="fas fa-cogs">⚙️ Machinery</option>
+                    </select>
+                    <div id="iconPreview" class="icon-preview">
+                        <i class="fas fa-truck-pickup"></i>
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Description *</label>
+                <textarea id="serviceDesc" rows="5" placeholder="Write service description..." required></textarea>
+            </div>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelService">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Service</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- Add Image Modal -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Gallery Image</h3>
+            <span class="close">&times;</span>
+        </div>
+        <form id="imageFormModal">
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="url" id="imageUrl" placeholder="https://example.com/crane-image.jpg" required>
+            </div>
+            <div class="form-group">
+                <label>Live Preview</label>
+                <div style="border: 2px dashed #ddd; border-radius: 10px; padding: 1rem; text-align: center; min-height: 200px; background: #f8f9fa;">
+                    <img id="imagePreview" style="max-width: 100%; max-height: 200px; border-radius: 8px; display: none;">
+                    <p id="previewText" style="color: #666; margin: 0;">Enter URL above to see preview</p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelImage">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Image</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
