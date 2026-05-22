@@ -206,7 +206,7 @@ function initData() {
         const contactInfo = {
             phone: "0504591121",
             whatsapp: "+971504591121",
-            address: "M18 Parking Lot, Mussafah, Abu Dhabi"
+            address: "Musaffah - M9 - Abu Dhabi - United Arab Emirates"
         };
         localStorage.setItem('contactInfo', JSON.stringify(contactInfo));
     }
